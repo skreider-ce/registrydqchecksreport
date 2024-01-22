@@ -5,5 +5,5 @@ runApplication <- function(){
     stop("Could not find myapp. Try re-installing `regdqchecks`.", call. = FALSE)
   }
 
-  shiny::runApp(appDir, display.mode = "normal", params = list(url = staticFolderUrl))
+  shiny::runApp(appDir, display.mode = "normal")
 }
