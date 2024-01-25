@@ -1,4 +1,4 @@
-Package: regdqchecks
+Package: registrydqchecksreport
 Type: Package
 Title: Run data quality checks on the specified registry
 Version: 0.1.0
