@@ -1,10 +1,8 @@
-staticFolderUrl <- "C:/Users/ScottKreider/Corrona LLC/Biostat and Epi Team Site - Registry Data QC Checks/registryCheckStorage/ad"
-
 # Define the server logic
 server <- function(input, output, session) {
 
   # Get list of critical check RDS files from the specified folder location
-  myFiles <- createListOfFiles(staticFolderUrl)
+  myFiles <- createListOfFiles(.GlobalEnv$.outputUrl)
 
   # Update the dropdown on the UI to show the choices of the names of the files
   shiny::updateSelectInput(session, "dataPullDate", choices = names(myFiles))
