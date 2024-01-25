@@ -9,7 +9,7 @@ Description: This package is to be used to make running data quality checks
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.3.0
+RoxygenNote: 7.3.1
 Imports:
     shiny
     ,glue
