@@ -3,9 +3,9 @@ runApplication <- function(outputUrl){
 
   .GlobalEnv$.outputUrl = outputUrl
 
-  appDir <- system.file("myapp", package = "regdqchecks")
+  appDir <- system.file("myapp", package = "registrydqchecksreport")
   if (appDir == "") {
-    stop("Could not find myapp. Try re-installing `regdqchecks`.", call. = FALSE)
+    stop("Could not find myapp. Try re-installing `registrydqchecksreport`.", call. = FALSE)
   }
 
   shiny::runApp(appDir, display.mode = "normal")
