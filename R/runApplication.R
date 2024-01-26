@@ -1,3 +1,7 @@
+#' Run the CorEvitas "Registry Data Quality Checks Report"
+#'
+#' @param outputUrl A text url string to the location of the registry check output datasets
+#'
 #' @export
 runApplication <- function(outputUrl){
 
@@ -10,11 +14,3 @@ runApplication <- function(outputUrl){
 
   shiny::runApp(appDir, display.mode = "normal")
 }
-
-
-# outputUrl <- "C:/Users/ScottKreider/Corrona LLC/Biostat and Epi Team Site - Registry Data QC Checks/registryCheckStorage/ad"
-
-
-# regdqchecks::runApplication(outputUrl = "C:/Users/ScottKreider/Corrona LLC/Biostat and Epi Team Site - Registry Data QC Checks/registryCheckStorage/ad")
-# regdqchecks::runApplication(outputUrl = "C:/Users/ScottKreider/Corrona LLC/Biostat and Epi Team Site - Registry Data QC Checks/registryCheckStorage/ms")
-# regdqchecks::runApplication(outputUrl = "C:/Users/ScottKreider/Corrona LLC/Biostat and Epi Team Site - Registry Data QC Checks/registryCheckStorage/pso")
