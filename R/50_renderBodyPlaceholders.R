@@ -1,3 +1,7 @@
+#' (internal function) Function to render a placeholder in the shiny app ui for the check results
+#'
+#' @param .output The shinyapp output object
+#'
 #' @export
 renderBodyPlaceholders <- function(.output){
   .output$criticalCheckOutputPlaceholder <- shiny::renderUI({
@@ -6,7 +10,8 @@ renderBodyPlaceholders <- function(.output){
 }
 
 
-# Canned code to render placeholders for the critical check summary and results
+#' (internal function) Canned code to render placeholders for the critical check summary and results
+#'
 #' @export
 criticalCheckBodyOutput <- function(){
   shiny::renderUI({

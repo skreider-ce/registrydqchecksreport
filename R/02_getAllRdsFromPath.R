@@ -1,3 +1,9 @@
+#' (internal function) Get a list of the names of all the R data files in a specified folder
+#'
+#' @param .folderUrl A character url to the folder with the R datasets of interest
+#'
+#' @returns A list containing the names of all the R datasets in the folder
+#'
 #' @export
 getAllRdsFromPath <- function(.folderUrl){
 

@@ -1,3 +1,8 @@
+#' (internal function) Render the critical check 6 results to the ui
+#'
+#' @param .output The shiny app server output object
+#' @param .resultsToRender The results of the critical check to render
+#'
 #' @export
 renderCritCheck6 <- function(.output, .resultsToRender){
   .output$checkDetails6 <- shiny::renderUI({
