@@ -2,7 +2,7 @@
 % Please edit documentation in R/01_createListOfFiles.R
 \name{createListOfFiles}
 \alias{createListOfFiles}
-\title{Create a list of the R files in a specified folder}
+\title{(internal function) Create a list of the R files in a specified folder}
 \usage{
 createListOfFiles(.folderUrl)
 }
@@ -13,5 +13,5 @@ createListOfFiles(.folderUrl)
 A list of the names of the R files in the specified folder
 }
 \description{
-Create a list of the R files in a specified folder
+(internal function) Create a list of the R files in a specified folder
 }

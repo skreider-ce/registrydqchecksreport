@@ -1,7 +1,8 @@
-#' Create a list of the R files in a specified folder
+#' (internal function) Create a list of the R files in a specified folder
 #'
 #' @param .folderUrl Text url string to the folder containing the Registry Check datafiles
-#' @return A list of the names of the R files in the specified folder
+#'
+#' @returns A list of the names of the R files in the specified folder
 #'
 #' @export
 createListOfFiles <- function(.folderUrl){
