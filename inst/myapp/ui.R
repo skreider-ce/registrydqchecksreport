@@ -2,9 +2,7 @@
 ui <- function(){
     shinydashboard::dashboardPage(
       shinydashboard::dashboardHeader(title = "Critical Checks")
-      ,shinydashboard::dashboardSidebar(
-        width = 3
-        ,shiny::fluidRow(
+      ,shinydashboard::dashboardSidebar(shiny::fluidRow(
           # Dropdown for main list items
           selectInput("dataPullDate", "Choose a Data Pull", choices = NULL)
         )
