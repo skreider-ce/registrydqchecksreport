@@ -1,5 +1,5 @@
 # library(remotes)
-# # remotes::install_github("skreider-ce/registrydqchecksreport")
+# remotes::install_github("skreider-ce/registrydqchecksreport")
 # remotes::install_github("skreider-ce/registrydqchecks")
 # library(registrydqchecksreport)
 # library(registrydqchecks)
@@ -11,3 +11,4 @@
 #                   ,.datasetsToCheck = c("exvisit", "exlab", "exdrugexp")
 #                   ,.outputUrl = "C:/Users/ScottKreider/Documents/scrap/store"
 #                   ,.isR = TRUE)
+#
