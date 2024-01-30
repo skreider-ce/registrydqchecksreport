@@ -10,8 +10,8 @@ renderCritCheck3 <- function(.output, .resultsToRender){
       shiny::fluidRow(
         shiny::column(12, shiny::textOutput("textOutput3"))
       )
-      ,shiny::fluidRow(
-        shiny::column(12, DT::DTOutput("dataTable3"))
+      ,shiny::fluidRow(class = "row-padding-top row-padding-bottom"
+                       ,shiny::column(12, DT::DTOutput("dataTable3"))
       )
     )
   })
@@ -20,6 +20,8 @@ renderCritCheck3 <- function(.output, .resultsToRender){
     paste0("PASS: ",.resultsToRender$pass)
   })
   .output$dataTable3 <- DT::renderDT({
-    DT::datatable(data.frame(.resultsToRender$extraVars), options = list(pageLength = 5))
+    DT::datatable(data.frame(.resultsToRender$extraVars)
+                  ,options = list(pageLength = 5, dom = "t")
+                  ,colnames = c("Extra Variables"))
   })
 }

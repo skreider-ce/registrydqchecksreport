@@ -10,8 +10,8 @@ renderCritCheck8 <- function(.output, .resultsToRender){
       shiny::fluidRow(
         shiny::column(12, shiny::textOutput("textOutput8"))
       )
-      ,shiny::fluidRow(
-        shiny::column(12, DT::DTOutput("dataTable8"))
+      ,shiny::fluidRow(class = "row-padding-top row-padding-bottom"
+                       ,shiny::column(12, DT::DTOutput("dataTable8"))
       )
     )
   })
@@ -20,6 +20,7 @@ renderCritCheck8 <- function(.output, .resultsToRender){
     paste0("PASS: ",.resultsToRender$pass)
   })
   .output$dataTable8 <- DT::renderDT({
-    DT::datatable(.resultsToRender$essentialVariablesMissingness, options = list(pageLength = 5))
+    DT::datatable(.resultsToRender$essentialVariablesMissingness
+                  ,options = list(pageLength = 5, dom = "t"))
   })
 }

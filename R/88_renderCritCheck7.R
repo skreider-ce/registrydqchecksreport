@@ -10,8 +10,8 @@ renderCritCheck7 <- function(.output, .resultsToRender){
       shiny::fluidRow(
         shiny::column(12, shiny::textOutput("textOutput7"))
       )
-      ,shiny::fluidRow(
-        shiny::column(12, DT::DTOutput("dataTable7"))
+      ,shiny::fluidRow(class = "row-padding-top row-padding-bottom"
+                       ,shiny::column(12, DT::DTOutput("dataTable7"))
       )
     )
   })
@@ -20,6 +20,8 @@ renderCritCheck7 <- function(.output, .resultsToRender){
     paste0("PASS: ",.resultsToRender$pass)
   })
   .output$dataTable7 <- DT::renderDT({
-    DT::datatable(.resultsToRender$essentialVariablesMissingness, options = list(pageLength = 5))
+    DT::datatable(.resultsToRender$essentialVariablesMissingness
+                  ,options = list(pageLength = 5, dom = "t")
+                  ,colnames = c("Variable Name", "Number of Rows", "Number Missing", "Proportion Missing"))
   })
 }

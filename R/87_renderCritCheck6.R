@@ -11,8 +11,8 @@ renderCritCheck6 <- function(.output, .resultsToRender){
         shiny::column(12, shiny::textOutput("textOutput6"))
         ,shiny::column(12, shiny::textOutput("textOutput6a"))
       )
-      ,shiny::fluidRow(
-        shiny::column(12, DT::DTOutput("dataTable6"))
+      ,shiny::fluidRow(class = "row-padding-top row-padding-bottom"
+                       ,shiny::column(12, DT::DTOutput("dataTable6"))
       )
     )
   })
@@ -26,6 +26,7 @@ renderCritCheck6 <- function(.output, .resultsToRender){
   })
 
   .output$dataTable6 <- DT::renderDT({
-    DT::datatable(data.frame(.resultsToRender$inOldAndNotInNew), options = list(pageLength = 5, title = "Table Title"))
+    DT::datatable(data.frame(.resultsToRender$inOldAndNotInNew)
+                  ,options = list(pageLength = 5, dom = "t"))
   })
 }

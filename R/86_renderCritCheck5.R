@@ -7,8 +7,8 @@
 renderCritCheck5 <- function(.output, .resultsToRender){
   .output$checkDetails5 <- shiny::renderUI({
     shiny::fluidPage(
-      shiny::fluidRow(
-        shiny::column(12, shiny::textOutput("textOutput5"))
+      shiny::fluidRow(class = "row-padding-bottom"
+        ,shiny::column(12, shiny::textOutput("textOutput5"))
         ,shiny::column(12, shiny::textOutput("textOutput5a"))
         ,shiny::column(12, shiny::textOutput("textOutput5b"))
         ,shiny::column(12, shiny::textOutput("textOutput5c"))
@@ -29,6 +29,6 @@ renderCritCheck5 <- function(.output, .resultsToRender){
   })
 
   .output$textOutput5c <- shiny::renderText({
-    paste0("Proportion Increase of Added Rows: ", .resultsToRender$propRowIncrease)
+    paste0("Proportion Increase of Added Rows: ", round(.resultsToRender$propRowIncrease,digits = 4))
   })
 }

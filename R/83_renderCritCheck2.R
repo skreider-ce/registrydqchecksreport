@@ -11,8 +11,8 @@ renderCritCheck2 <- function(.output, .resultsToRender){
         shiny::column(12, shiny::textOutput("textOutput2"))
         ,shiny::column(12, shiny::textOutput("textOutput2a"))
       )
-      ,shiny::fluidRow(
-        shiny::column(12, DT::DTOutput("dataTable2"))
+      ,shiny::fluidRow(class = "row-padding-top row-padding-bottom"
+                       ,shiny::column(12, DT::DTOutput("dataTable2"))
       )
     )
   })
@@ -26,6 +26,8 @@ renderCritCheck2 <- function(.output, .resultsToRender){
   })
 
   .output$dataTable2 <- DT::renderDT({
-    DT::datatable(data.frame(.resultsToRender$omittedVars), options = list(pageLength = 5))
+    DT::datatable(data.frame(.resultsToRender$omittedVars)
+                  ,options = list(pageLength = 5, dom = "t")
+                  ,colnames = c("Omitted Variables"))
   })
 }
