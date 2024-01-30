@@ -27,6 +27,6 @@ renderCritCheck6 <- function(.output, .resultsToRender){
 
   .output$dataTable6 <- DT::renderDT({
     DT::datatable(data.frame(.resultsToRender$inOldAndNotInNew)
-                  ,options = list(pageLength = 5, dom = "t"))
+                  ,options = list(pageLength = 5))
   })
 }

@@ -27,7 +27,7 @@ renderCritCheck2 <- function(.output, .resultsToRender){
 
   .output$dataTable2 <- DT::renderDT({
     DT::datatable(data.frame(.resultsToRender$omittedVars)
-                  ,options = list(pageLength = 5, dom = "t")
+                  ,options = list(pageLength = 5)
                   ,colnames = c("Omitted Variables"))
   })
 }

@@ -27,7 +27,7 @@ renderCritCheck1 <- function(.output, .resultsToRender){
 
   .output$dataTable1 <- DT::renderDT({
     DT::datatable(.resultsToRender$listOfDuplicateRows
-                  ,options = list(pageLength = 5, dom = "t"))
+                  ,options = list(pageLength = 5))
   })
 
 }

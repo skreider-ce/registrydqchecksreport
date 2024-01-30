@@ -21,7 +21,7 @@ renderCritCheck3 <- function(.output, .resultsToRender){
   })
   .output$dataTable3 <- DT::renderDT({
     DT::datatable(data.frame(.resultsToRender$extraVars)
-                  ,options = list(pageLength = 5, dom = "t")
+                  ,options = list(pageLength = 5)
                   ,colnames = c("Extra Variables"))
   })
 }
