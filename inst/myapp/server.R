@@ -44,6 +44,6 @@ server <- function(input, output, session) {
 
   shiny::observeEvent(input$downloadBtn, {
     print("ss")
-    shinyscreenshot::screenshot(filename = "C:/Users/ScottKreider/Documents/scrap/outp.png")
+    shinyscreenshot::screenshot(filename = glue::glue("{.selectedDsName()}_{.selectedPullDate()}"))
   })
 }
