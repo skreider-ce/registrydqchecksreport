@@ -12,5 +12,5 @@ runApplication <- function(outputUrl){
     stop("Could not find myapp. Try re-installing `registrydqchecksreport`.", call. = FALSE)
   }
 
-  shiny::runApp(appDir, display.mode = "normal")
+  shiny::runApp(appDir, display.mode = "auto")
 }
