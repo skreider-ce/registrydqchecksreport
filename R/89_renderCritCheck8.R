@@ -21,8 +21,8 @@ renderCritCheck8 <- function(.output, .resultsToRender){
   })
   .output$dataTable8 <- DT::renderDT({
     DT::datatable(.resultsToRender$essentialVariablesMissingness
-                  ,options = list(pageLength = 5
+                  ,options = list(pageLength = 5)
                   ,colnames = c("Variable Name", "Number of Rows", "Number Missing", "Proportion Missing"
-                                ,"Last Month Number of Rows", "Last Month Number Missing", "Last Month Proportion Missing")))
+                                ,"Last Month Number of Rows", "Last Month Number Missing", "Last Month Proportion Missing"))
   })
 }
