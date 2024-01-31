@@ -15,4 +15,8 @@
 #
 
 
+
+# remove.packages("registrydqchecksreport")
+# remotes::install_github("skreider-ce/registrydqchecksreport")
+# library(registrydqchecksreport)
 # registrydqchecksreport::runApplication("C:/Users/ScottKreider/Documents/scrap/store/checks")

@@ -42,7 +42,7 @@ server <- function(input, output, session) {
     }
   })
 
-  shiny::observeEvent(input$go, {
+  shiny::observeEvent(input$downloadBtn, {
     print("ss")
     shinyscreenshot::screenshot(filename = "C:/Users/ScottKreider/Documents/scrap/outp.png")
   })
