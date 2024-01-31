@@ -41,4 +41,9 @@ server <- function(input, output, session) {
       renderBodyResults(output,.selectedPassFail(),myFiles[[.selectedPullDate()]][[.selectedDsName()]])
     }
   })
+
+  shiny::observeEvent(input$go, {
+    print("ss")
+    shinyscreenshot::screenshot(filename = "C:/Users/ScottKreider/Documents/scrap/outp.png")
+  })
 }
