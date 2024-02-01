@@ -7,7 +7,6 @@
 #' @export
 extractRunnerSummary <- function(.selectedPullInfo){
   .dataTimestamp <- substr(.selectedPullInfo, 12, 30)
-  print(glue::glue("{.outputUrl}/summary/runnerSummary_{.dataTimestamp}.rds"))
   .runnerSummary <- readRDS(glue::glue("{.outputUrl}/summary/runnerSummary_{.dataTimestamp}.rds"))
 
   return(.runnerSummary)
