@@ -12,11 +12,22 @@ server <- function(input, output, session) {
   .selectedDsName <- shiny::reactiveVal(NULL)
   .selectedPassFail <- shiny::reactiveVal(NULL)
   .selectedPassFailUpper <- shiny::reactiveVal(NULL)
+  .selectedRunnerSummary <- shiny::reactiveVal(NULL)
 
   # When a pullDate is selected - update the datasetSelect accordingly
   shiny::observe({
     .selectedPullDate(input$dataPullDate)
     shiny::updateSelectInput(session, "datasetName", choices = c(names(myFiles[[input$dataPullDate]])))
+
+    print(.selectedPullDate())
+    if(.selectedPullDate() != ""){
+      .selectedRunnerSummary(extractRunnerSummary(.selectedPullDate()))
+      output$runnerSummaryPlaceholder <- shiny::renderUI({
+        shiny::renderPrint({
+          paste0(.selectedRunnerSummary())
+        })
+      })
+    }
 
     .selectedPassFailUpper(extractPassFailUpper(myFiles[[.selectedPullDate()]]))
     output$totalCritCheckPlaceholder <- shiny::renderUI({
