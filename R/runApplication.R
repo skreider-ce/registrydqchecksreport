@@ -3,9 +3,9 @@
 #' @param outputUrl A text url string to the location of the registry check output datasets
 #'
 #' @export
-runApplication <- function(outputUrl){
+runApplication <- function(.outputUrl){
 
-  .GlobalEnv$.outputUrl = outputUrl
+  .GlobalEnv$.outputUrl = .outputUrl
 
   appDir <- system.file("myapp", package = "registrydqchecksreport")
   if (appDir == "") {

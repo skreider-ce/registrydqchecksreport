@@ -4,7 +4,7 @@
 \alias{runApplication}
 \title{Run the CorEvitas "Registry Data Quality Checks Report"}
 \usage{
-runApplication(outputUrl)
+runApplication(.outputUrl)
 }
 \arguments{
 \item{outputUrl}{A text url string to the location of the registry check output datasets}
