@@ -19,7 +19,6 @@ server <- function(input, output, session) {
     .selectedPullDate(input$dataPullDate)
     shiny::updateSelectInput(session, "datasetName", choices = c(names(myFiles[[input$dataPullDate]])))
 
-    print(.selectedPullDate())
     if(.selectedPullDate() != ""){
       .selectedRunnerSummary(extractRunnerSummary(.selectedPullDate()))
       output$runnerSummaryPlaceholder <- shiny::renderUI({
