@@ -21,6 +21,7 @@
 # remotes::install_github("skreider-ce/registrydqchecksreport")
 # library(registrydqchecksreport)
 # registrydqchecksreport::runApplication("C:/Users/ScottKreider/Documents/scrap/store/2023-12-04/checks")
-
+#
+# .GlobalEnv$.outputUrl = "C:/Users/ScottKreider/Documents/scrap/store/2023-12-04/checks"
 
 # names(createListOfFiles("C:/Users/ScottKreider/Documents/scrap/store/2023-12-04/checks"))
