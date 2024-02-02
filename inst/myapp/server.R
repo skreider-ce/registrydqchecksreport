@@ -17,10 +17,10 @@ server <- function(input, output, session) {
   # When a pullDate is selected - update the datasetSelect accordingly
   shiny::observe({
     .selectedPullDate(input$dataPullDate)
-    shiny::updateSelectInput(session, "datasetName", choices = c(names(myFiles[[input$dataPullDate]])))
+    shiny::updateSelectInput(session, "datasetName", choices = c(names(myFiles[[input$dataPullDate]]$criticalChecks)))
 
     if(.selectedPullDate() != ""){
-      .selectedRunnerSummary(extractRunnerSummary(.selectedPullDate()))
+      .selectedRunnerSummary(myFiles[[.selectedPullDate()]]$runnerSummary)
       output$runnerSummaryPlaceholder <- shiny::renderUI({
         shiny::renderPrint({
           paste0(.selectedRunnerSummary())
@@ -28,7 +28,7 @@ server <- function(input, output, session) {
       })
     }
 
-    .selectedPassFailUpper(extractPassFailUpper(myFiles[[.selectedPullDate()]]))
+    .selectedPassFailUpper(extractPassFailUpper(myFiles[[.selectedPullDate()]]$criticalChecks))
     output$totalCritCheckPlaceholder <- shiny::renderUI({
       shiny::renderPrint({
         paste0(.selectedPassFailUpper())
@@ -45,10 +45,10 @@ server <- function(input, output, session) {
 
   shiny::observe({
     if(!is.null(.selectedDsName())){
-      .selectedPassFail(extractPassFail(myFiles[[.selectedPullDate()]][[.selectedDsName()]]))
+      .selectedPassFail(extractPassFail(myFiles[[.selectedPullDate()]]$criticalChecks[[.selectedDsName()]]))
       # Dynamically render critical check placeholders to UI
       renderBodyPlaceholders(output)
-      renderBodyResults(output,.selectedPassFail(),myFiles[[.selectedPullDate()]][[.selectedDsName()]])
+      renderBodyResults(output,.selectedPassFail(),myFiles[[.selectedPullDate()]]$criticalChecks[[.selectedDsName()]])
     }
   })
 
