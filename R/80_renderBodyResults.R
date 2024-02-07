@@ -23,6 +23,11 @@ renderCheckDetailResults <- function(.output,.checkList){
   renderCritCheck4(.output, .checkList[["criticalCheck4"]])
   renderCritCheck5(.output, .checkList[["criticalCheck5"]])
   renderCritCheck6(.output, .checkList[["criticalCheck6"]])
-  renderCritCheck7(.output, .checkList[["criticalCheck7"]])
-  renderCritCheck8(.output, .checkList[["criticalCheck8"]])
+  if(!is.null(.checkList[["criticalCheck7"]])){
+    renderCritCheck7(.output, .checkList[["criticalCheck7"]])
+  }
+  if(!is.null(.checkList[["criticalCheck8"]])){
+    renderCritCheck8(.output, .checkList[["criticalCheck8"]])
+  }
+
 }
