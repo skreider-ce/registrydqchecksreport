@@ -10,7 +10,12 @@ extractPassFail <- function(.resultsList){
   .passFailList <- data.frame()
 
   for(.result in .resultsList){
-    .passFailList <- append(.passFailList, {names(.result) = .result$pass})
+    if(!is.null(.result)){
+      .passFailList <- append(.passFailList, {names(.result) = .result$pass})
+    } else{
+      .passFailList <- append(.passFailList, NULL)
+    }
+
   }
 
   names(.passFailList) <- names(.resultsList)
@@ -33,7 +38,12 @@ extractPassFailUpper <- function(.dsList){
 
   for(.dsName in names(.dsList)){
     for(.result in names(.dsList[[.dsName]])){
-      .passFailList2 <- c(.passFailList2, .dsList[[.dsName]][[.result]]$pass)
+      if(!is.null(.dsList[[.dsName]][[.result]])){
+        .passFailList2 <- c(.passFailList2, .dsList[[.dsName]][[.result]]$pass)
+      } else {
+        .passFailList2 <- c(.passFailList2, NULL)
+      }
+
     }
   }
 
