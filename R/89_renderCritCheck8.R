@@ -5,24 +5,31 @@
 #'
 #' @export
 renderCritCheck8 <- function(.output, .resultsToRender){
-  .output$checkDetails8 <- shiny::renderUI({
-    shiny::fluidPage(
-      shiny::fluidRow(
-        shiny::column(12, shiny::textOutput("textOutput8"))
+  if(is.null(.resultsToRender)){
+    .output$checkDetails8 <- shiny::renderUI({
+      paste0("")
+    })
+  } else {
+    .output$checkDetails8 <- shiny::renderUI({
+      shiny::fluidPage(
+        shiny::fluidRow(
+          shiny::column(12, shiny::textOutput("textOutput8"))
+        )
+        ,shiny::fluidRow(class = "row-padding-top row-padding-bottom"
+                         ,shiny::column(12, DT::DTOutput("dataTable8"))
+        )
       )
-      ,shiny::fluidRow(class = "row-padding-top row-padding-bottom"
-                       ,shiny::column(12, DT::DTOutput("dataTable8"))
-      )
-    )
-  })
+    })
 
-  .output$textOutput8 <- shiny::renderText({
-    paste0("PASS: ",.resultsToRender$pass)
-  })
-  .output$dataTable8 <- DT::renderDT({
-    DT::datatable(.resultsToRender$essentialVariablesMissingness
-                  ,options = list(pageLength = 5)
-                  ,colnames = c("Variable Name", "Number of Rows", "Number Missing", "Proportion Missing"
-                                ,"Last Month Number of Rows", "Last Month Number Missing", "Last Month Proportion Missing"))
-  })
+    .output$textOutput8 <- shiny::renderText({
+      paste0("PASS: ",.resultsToRender$pass)
+    })
+    .output$dataTable8 <- DT::renderDT({
+      DT::datatable(.resultsToRender$essentialVariablesMissingness
+                    ,options = list(pageLength = 5)
+                    ,colnames = c("Variable Name", "Number of Rows", "Number Missing", "Proportion Missing"
+                                  ,"Last Month Number of Rows", "Last Month Number Missing", "Last Month Proportion Missing"))
+    })
+  }
+
 }
