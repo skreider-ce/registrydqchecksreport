@@ -26,7 +26,8 @@
 
 # names(createListOfFiles("C:/Users/ScottKreider/Documents/scrap/store/2023-12-04/checks"))
 
-# myResults$criticalChecks <- readRDS("C:/Users/ScottKreider/Documents/scrap/store/2024-01-04/checks/2024-01-04_2024_02_07_09_49_34_checks.rds")
+# myResults <- readRDS("C:/Users/ScottKreider/Documents/scrap/store/ibd/2024-02-01/checks/2024-02-01_2024_02_07_10_35_57_checks.rds")
+# myResults$criticalChecks
 # toInput <- myResults$criticalChecks[["exlab"]]
 # is.null(toInput$criticalCheck7)
 # View(toInput)
