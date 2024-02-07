@@ -27,6 +27,7 @@ renderCritCheck4 <- function(.output, .resultsToRender){
 
   .output$dataTable4 <- DT::renderDT({
     DT::datatable(data.frame(.resultsToRender$listOfVarsWithMissingLabels)
-                  ,options = list(pageLength = 5))
+                  ,options = list(pageLength = 5)
+                  ,colnames = c("Variables with Missing Labels"))
   })
 }
