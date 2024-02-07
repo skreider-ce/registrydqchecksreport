@@ -25,3 +25,13 @@
 # .GlobalEnv$.outputUrl = "C:/Users/ScottKreider/Documents/scrap/store/2023-12-04/checks"
 
 # names(createListOfFiles("C:/Users/ScottKreider/Documents/scrap/store/2023-12-04/checks"))
+
+# myResults$criticalChecks <- readRDS("C:/Users/ScottKreider/Documents/scrap/store/2024-01-04/checks/2024-01-04_2024_02_07_09_49_34_checks.rds")
+# toInput <- myResults$criticalChecks[["exlab"]]
+# is.null(toInput$criticalCheck7)
+# View(toInput)
+# extractPassFail(myResults$criticalChecks[["exlab"]])
+#
+# for(a in toInput){
+#   print(a)
+# }

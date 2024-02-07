@@ -18,8 +18,6 @@ extractPassFail <- function(.resultsList){
 
   }
 
-  names(.passFailList) <- names(.resultsList)
-
   return(.passFailList)
 }
 
