@@ -4,28 +4,23 @@
 #' @param .resultsToRender The results of the noncritical checks to render
 #'
 #' @export
-renderNonCriticalCheckOuput <- function(.output, .resultsToRender){
+renderNonCriticalCheckOuput <- function(.output, .resultsToRender) {
 
   .output$nonCriticalCheckDetails <- shiny::renderUI({
-    column_elements <- lapply(names(.resultsToRender$nPctList), function(item){
-      shiny::column(width = 12
-             ,shiny::htmlOutput(paste0("itemTitle_", item))
-             ,shiny::verbatimTextOutput(paste0("subitems_", item))
-             )
-    })
+    column_elements <-
+      lapply(names(.resultsToRender$nPctList), function(item) {
+        shiny::column(width = 12
+                      , h4(item)
+                      , shiny::verbatimTextOutput(paste0("subitems_",item)))
+      })
     do.call(tagList, column_elements)
   })
 
   for(item_name in names(.resultsToRender$nPctList)){
-    .output[[paste0("itemTitle_", item_name)]] <- shiny::renderHtml({
-      shiny::h1(.resultsToRender$nPctList[[item_name]]$checkTitle)
-    })
-
-    .output[[paste0("subitems_", item_name)]] <- shiny::renderPrint({
+    .output[[paste0("subitems_",item_name)]] <- shiny::renderPrint({
       .resultsToRender$nPctList[[item_name]]
     })
   }
-
 
   # .output$checkDetails1 <- shiny::renderUI({
   #   shiny::fluidPage(
@@ -53,4 +48,3 @@ renderNonCriticalCheckOuput <- function(.output, .resultsToRender){
   # })
 
 }
-
