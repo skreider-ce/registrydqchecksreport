@@ -5,10 +5,15 @@
 #'
 #' @export
 renderNonCriticalCheckOuput <- function(.output, .resultsToRender){
-  .output$nonCriticalCheckDetails <- shiny::renderUI({
-    shiny::renderPrint(.resultsToRender$nPctList)
-    shiny::renderPrint(.resultsToRender$summaryStats)
-  })
+
+    .output$nonCriticalCheckDetails <- shiny::renderUI({
+      if(!is.null(.resultsToRender)){
+        shiny::renderPrint(.resultsToRender$nPctList)
+        shiny::renderPrint(.resultsToRender$summaryStats)
+      }
+    })
+
+
   # .output$checkDetails1 <- shiny::renderUI({
   #   shiny::fluidPage(
   #     shiny::fluidRow(
