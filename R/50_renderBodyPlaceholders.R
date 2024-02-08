@@ -25,6 +25,7 @@ criticalCheckBodyOutput <- function(){
       ,renderCCResultPlaceholder(6, "Disappearing rows")
       ,renderCCResultPlaceholder(7, "Essential Variable Nonresponse")
       ,renderCCResultPlaceholder(8, "Essential Variable MoM (month over month) Nonresponse")
+      ,renderNCResultPlaceholder()
     )
   })
 }
