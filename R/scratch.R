@@ -20,7 +20,8 @@
 # remove.packages("registrydqchecksreport")
 # remotes::install_github("skreider-ce/registrydqchecksreport")
 # library(registrydqchecksreport)
-# registrydqchecksreport::runApplication("C:/Users/ScottKreider/Documents/scrap/store/2023-12-04/checks")
+# options(install.packages.check.source = "no")
+# registrydqchecksreport::runApplication("C:/Users/ScottKreider/Documents/scrap/store/ad/2024-01-04/checks")
 #
 # .GlobalEnv$.outputUrl = "C:/Users/ScottKreider/Documents/scrap/store/2023-12-04/checks"
 
