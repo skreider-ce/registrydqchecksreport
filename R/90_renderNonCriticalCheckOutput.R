@@ -8,8 +8,9 @@ renderNonCriticalCheckOuput <- function(.output, .resultsToRender){
 
     .output$nonCriticalCheckDetails <- shiny::renderUI({
       if(!is.null(.resultsToRender)){
-        shiny::renderPrint(.resultsToRender$nPctList)
-        shiny::renderPrint(.resultsToRender$summaryStats)
+        .nPctList <- paste(.resultsToRender$nPctList, collapse = ", ")
+        .summaryStats <- paste(.resultsToRender$summaryStats, collapse = ", ")
+        tagList(.nPctList, .summaryStats)
       }
     })
 
@@ -40,3 +41,4 @@ renderNonCriticalCheckOuput <- function(.output, .resultsToRender){
   # })
 
 }
+
