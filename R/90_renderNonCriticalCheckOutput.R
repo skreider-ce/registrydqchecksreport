@@ -5,8 +5,9 @@
 #'
 #' @export
 renderNonCriticalCheckOuput <- function(.output, .resultsToRender){
-  .output$nonCriticalCheckDetails <- shiny::renderPrint({
-    .resultsToRender
+  .output$nonCriticalCheckDetails <- shiny::renderUI({
+    shiny::renderPrint(.resultsToRender$nPctList)
+    shiny::renderPrint(.resultsToRender$summaryStats)
   })
   # .output$checkDetails1 <- shiny::renderUI({
   #   shiny::fluidPage(
