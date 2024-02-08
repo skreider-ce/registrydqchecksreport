@@ -4,7 +4,7 @@
 #' @param .resultsToRender The results of the noncritical checks to render
 #'
 #' @export
-renderCritCheck1 <- function(.output, .resultsToRender){
+renderNonCriticalCheckOuput <- function(.output, .resultsToRender){
   .output$nonCriticalCheckDetails <- shiny::renderUI({
     paste0(.resultsToRender)
   })

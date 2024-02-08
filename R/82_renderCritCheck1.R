@@ -1,4 +1,4 @@
-#' (internal function) Render the critical check 8 results to the ui
+#' (internal function) Render the critical check 1 results to the ui
 #'
 #' @param .output The shiny app server output object
 #' @param .resultsToRender The results of the critical check to render

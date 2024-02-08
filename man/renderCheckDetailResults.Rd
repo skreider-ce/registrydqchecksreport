@@ -4,7 +4,7 @@
 \alias{renderCheckDetailResults}
 \title{(internal function) Render the results of the critical checks to the ui}
 \usage{
-renderCheckDetailResults(.output, .checkList)
+renderCheckDetailResults(.output, .criticalCheckList, .nonCriticalCheckList)
 }
 \arguments{
 \item{.output}{The shiny app server output object}
