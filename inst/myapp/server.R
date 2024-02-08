@@ -48,7 +48,10 @@ server <- function(input, output, session) {
       .selectedPassFail(extractPassFail(myFiles[[.selectedPullDate()]]$criticalChecks[[.selectedDsName()]]))
       # Dynamically render critical check placeholders to UI
       renderBodyPlaceholders(output)
-      renderBodyResults(output,.selectedPassFail(),myFiles[[.selectedPullDate()]]$criticalChecks[[.selectedDsName()]])
+      renderBodyResults(.output = output
+                        ,.summary = .selectedPassFail()
+                        ,.criticalCheckList = myFiles[[.selectedPullDate()]]$criticalChecks[[.selectedDsName()]]
+                        ,.nonCriticalCheckList = myFiles[[.selectedPullDate()]]$nonCriticalChecks[[.selectedDsName()]])
     }
   })
 
