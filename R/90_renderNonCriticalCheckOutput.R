@@ -12,7 +12,7 @@ renderNonCriticalCheckOuput <- function(.output, .resultsToRender) {
         shiny::column(width = 12
                       ,column(width = 12,
                               h2(glue::glue("Title: {.resultsToRender$nPctList[[item]]$checkTitle}"))
-                              ,style = "background-color: lightblue;")
+                              ,style = "background-color: rgb(252,116,8);")
                       ,h4(glue::glue("Description: {.resultsToRender$nPctList[[item]]$checkDescription}"))
                       ,p(glue::glue("Total observations: {.resultsToRender$nPctList[[item]]$values$N}"))
                       ,p(glue::glue("Number failed: {.resultsToRender$nPctList[[item]]$values$n}"))
