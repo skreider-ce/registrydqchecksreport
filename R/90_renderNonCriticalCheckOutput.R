@@ -10,15 +10,18 @@ renderNonCriticalCheckOuput <- function(.output, .resultsToRender) {
     column_elements <-
       lapply(names(.resultsToRender$nPctList), function(item) {
         shiny::column(width = 12
-                      , h4(item)
-                      , shiny::verbatimTextOutput(paste0("subitems_",item)))
+                      ,h4(item)
+                      ,shiny::verbatimTextOutput(paste0("subitems_",item)))
       })
     do.call(tagList, column_elements)
   })
 
   for(item_name in names(.resultsToRender$nPctList)){
-    .output[[paste0("subitems_",item_name)]] <- shiny::renderPrint({
-      .resultsToRender$nPctList[[item_name]]
+    local({
+      .lin <- item_name
+      .output[[paste0("subitems_",.lin)]] <- shiny::renderPrint({
+        .resultsToRender$nPctList[[.lin]]
+      })
     })
   }
 
