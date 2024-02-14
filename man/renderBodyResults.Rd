@@ -4,7 +4,7 @@
 \alias{renderBodyResults}
 \title{(internal function) Render the check results in the body of the UI}
 \usage{
-renderBodyResults(.output, .summary, .checkList)
+renderBodyResults(.output, .summary, .criticalCheckList, .nonCriticalCheckList)
 }
 \arguments{
 \item{.output}{The shiny app server output object}

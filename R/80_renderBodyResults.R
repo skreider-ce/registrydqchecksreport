@@ -5,9 +5,12 @@
 #' @param .checkList The list of check results to be rendered to the ui
 #'
 #' @export
-renderBodyResults <- function(.output,.summary,.checkList){
-  renderSummaryResults(.output, .summary)
-  renderCheckDetailResults(.output,.checkList)
+renderBodyResults <- function(.output,.summary,.criticalCheckList,.nonCriticalCheckList){
+  renderSummaryResults(.output = .output
+                       ,.summary = .summary)
+  renderCheckDetailResults(.output = .output
+                           ,.criticalCheckList = .criticalCheckList
+                           ,.nonCriticalCheckList = .nonCriticalCheckList)
 }
 
 #' (internal function) Render the results of the critical checks to the ui
@@ -16,13 +19,15 @@ renderBodyResults <- function(.output,.summary,.checkList){
 #' @param .checkList A list of the results of the critical checks
 #'
 #' @export
-renderCheckDetailResults <- function(.output,.checkList){
-  renderCritCheck1(.output, .checkList[["criticalCheck1"]])
-  renderCritCheck2(.output, .checkList[["criticalCheck2"]])
-  renderCritCheck3(.output, .checkList[["criticalCheck3"]])
-  renderCritCheck4(.output, .checkList[["criticalCheck4"]])
-  renderCritCheck5(.output, .checkList[["criticalCheck5"]])
-  renderCritCheck6(.output, .checkList[["criticalCheck6"]])
-  renderCritCheck7(.output, .checkList[["criticalCheck7"]])
-  renderCritCheck8(.output, .checkList[["criticalCheck8"]])
+renderCheckDetailResults <- function(.output,.criticalCheckList,.nonCriticalCheckList){
+  renderCritCheck1(.output, .criticalCheckList[["criticalCheck1"]])
+  renderCritCheck2(.output, .criticalCheckList[["criticalCheck2"]])
+  renderCritCheck3(.output, .criticalCheckList[["criticalCheck3"]])
+  renderCritCheck4(.output, .criticalCheckList[["criticalCheck4"]])
+  renderCritCheck5(.output, .criticalCheckList[["criticalCheck5"]])
+  renderCritCheck6(.output, .criticalCheckList[["criticalCheck6"]])
+  renderCritCheck7(.output, .criticalCheckList[["criticalCheck7"]])
+  renderCritCheck8(.output, .criticalCheckList[["criticalCheck8"]])
+  renderNonCriticalCheckOuput(.output = .output
+                              ,.resultsToRender = .nonCriticalCheckList)
 }

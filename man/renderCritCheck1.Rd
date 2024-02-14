@@ -2,7 +2,7 @@
 % Please edit documentation in R/82_renderCritCheck1.R
 \name{renderCritCheck1}
 \alias{renderCritCheck1}
-\title{(internal function) Render the critical check 8 results to the ui}
+\title{(internal function) Render the critical check 1 results to the ui}
 \usage{
 renderCritCheck1(.output, .resultsToRender)
 }
@@ -12,5 +12,5 @@ renderCritCheck1(.output, .resultsToRender)
 \item{.resultsToRender}{The results of the critical check to render}
 }
 \description{
-(internal function) Render the critical check 8 results to the ui
+(internal function) Render the critical check 1 results to the ui
 }

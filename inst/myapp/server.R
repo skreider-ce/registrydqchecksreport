@@ -2,7 +2,7 @@
 server <- function(input, output, session) {
 
   # Get list of critical check RDS files from the specified folder location
-  myFiles <- createListOfFiles(.GlobalEnv$.outputUrl)
+  myFiles <- createListOfFiles(.GlobalEnv$.outpUrl)
 
   # Update the dropdown on the UI to show the choices of the names of the files
   shiny::updateSelectInput(session, "dataPullDate", choices = names(myFiles))
@@ -48,7 +48,10 @@ server <- function(input, output, session) {
       .selectedPassFail(extractPassFail(myFiles[[.selectedPullDate()]]$criticalChecks[[.selectedDsName()]]))
       # Dynamically render critical check placeholders to UI
       renderBodyPlaceholders(output)
-      renderBodyResults(output,.selectedPassFail(),myFiles[[.selectedPullDate()]]$criticalChecks[[.selectedDsName()]])
+      renderBodyResults(.output = output
+                        ,.summary = .selectedPassFail()
+                        ,.criticalCheckList = myFiles[[.selectedPullDate()]]$criticalChecks[[.selectedDsName()]]
+                        ,.nonCriticalCheckList = myFiles[[.selectedPullDate()]]$nonCriticalChecks[[.selectedDsName()]])
     }
   })
 
