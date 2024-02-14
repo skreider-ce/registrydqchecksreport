@@ -2,7 +2,7 @@
 server <- function(input, output, session) {
 
   # Get list of critical check RDS files from the specified folder location
-  myFiles <- createListOfFiles(.GlobalEnv$.outputUrl)
+  myFiles <- createListOfFiles(.GlobalEnv$.outpUrl)
 
   # Update the dropdown on the UI to show the choices of the names of the files
   shiny::updateSelectInput(session, "dataPullDate", choices = names(myFiles))

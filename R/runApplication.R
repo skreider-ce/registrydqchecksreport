@@ -5,7 +5,7 @@
 #' @export
 runApplication <- function(.outputUrl){
 
-  .GlobalEnv$.outputUrl = .outputUrl
+  .GlobalEnv$.outpUrl = .outputUrl
 
   appDir <- system.file("myapp", package = "registrydqchecksreport")
   if (appDir == "") {
