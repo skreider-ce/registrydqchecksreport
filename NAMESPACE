@@ -3,7 +3,6 @@
 export(createListOfFiles)
 export(criticalCheckBodyOutput)
 export(extractPassFail)
-export(extractRunnerSummary)
 export(getAllRdsFromPath)
 export(renderBodyPlaceholders)
 export(renderBodyResults)
