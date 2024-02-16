@@ -20,30 +20,3 @@ extractPassFail <- function(.resultsList){
 
   return(.passFailList)
 }
-
-
-#' (internal function) Extract pass/fail results from all the datasets for this datapull
-#'
-#' @param .dsList A list containing the registrydqchecks output for all datasets for this datapull date
-#'
-#' @returns A list of the pass/fail results for all critical checks for all datasets
-#'
-#' @export
-extractPassFailUpper <- function(.dsList){
-
-  .passFailList2 <- c()
-  .pfList <- list()
-
-  for(.dsName in names(.dsList)){
-    for(.result in names(.dsList[[.dsName]])){
-      if(!is.null(.dsList[[.dsName]][[.result]])){
-        .passFailList2 <- c(.passFailList2, .dsList[[.dsName]][[.result]]$pass)
-      } else {
-        .passFailList2 <- c(.passFailList2, NULL)
-      }
-
-    }
-  }
-
-  return(.passFailList2)
-}

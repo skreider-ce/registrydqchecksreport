@@ -28,10 +28,9 @@ server <- function(input, output, session) {
       })
     }
 
-    .selectedPassFailUpper(extractPassFailUpper(myFiles[[.selectedPullDate()]]$criticalChecks))
     output$totalCritCheckPlaceholder <- shiny::renderUI({
       shiny::renderPrint({
-        paste0(.selectedPassFailUpper())
+        print(myFiles[[.selectedPullDate()]]$checkSummary$criticalCheckSummary)
       })
     })
   })
