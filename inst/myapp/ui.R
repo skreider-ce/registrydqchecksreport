@@ -29,6 +29,7 @@ ui <- function(){
         ,shiny::actionButton("downloadBtn", "Download as PDF")
         ,shiny::fluidRow(uiOutput("runnerSummaryPlaceholder"))
         ,shiny::fluidRow(uiOutput("totalCritCheckPlaceholder"))
+        ,shiny::fluidRow(uiOutput("totalNonCritCheckPlaceholder"))
         ,shiny::fluidRow(uiOutput("criticalCheckOutputPlaceholder"))
       )
   )
