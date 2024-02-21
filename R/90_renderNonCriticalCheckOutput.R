@@ -6,6 +6,7 @@
 #' @export
 renderNonCriticalCheckOuput <- function(.output, .resultsToRender) {
 
+  # Loop through nPctList ncCheck output and output info and table placeholders
   .output$nonCriticalCheckDetails <- shiny::renderUI({
     column_elements <-
       lapply(names(.resultsToRender$nPctList), function(item) {
@@ -25,43 +26,17 @@ renderNonCriticalCheckOuput <- function(.output, .resultsToRender) {
     do.call(tagList, column_elements)
   })
 
+  # Loop through nPctList ncCheck output and render tables
   for(item_name in names(.resultsToRender$nPctList)){
     local({
       .lin <- item_name
       if(nrow(.resultsToRender$nPctList[[.lin]]$listing) > 0){
         .output[[paste0("subitems_",.lin)]] <- DT::renderDT({
-          # .resultsToRender$nPctList[[.lin]]$listing
           DT::datatable(data.frame(.resultsToRender$nPctList[[.lin]]$listing[,c(0:min(ncol(.resultsToRender$nPctList[[.lin]]$listing), 5))])
                         ,options = list(pageLength = 5))
         })
       }
     })
   }
-
-  # ,shiny::verbatimTextOutput(paste0("subitems_",item))
-  # .output$checkDetails1 <- shiny::renderUI({
-  #   shiny::fluidPage(
-  #     shiny::fluidRow(
-  #       shiny::column(12, shiny::textOutput("textOutput1"))
-  #       ,shiny::column(12, shiny::textOutput("textOutput1a"))
-  #     )
-  #     ,shiny::fluidRow(class = "row-padding-top row-padding-bottom"
-  #                      ,shiny::column(12, DT::DTOutput("dataTable1"))
-  #     )
-  #   )
-  # })
-  #
-  # .output$textOutput1 <- shiny::renderText({
-  #   paste0("PASS: ",.resultsToRender$pass)
-  # })
-  #
-  # .output$textOutput1a <- shiny::renderText({
-  #   paste0("Number of Duplicate Rows: ",.resultsToRender$nDuplicateRows)
-  # })
-  #
-  # .output$dataTable1 <- DT::renderDT({
-  #   DT::datatable(.resultsToRender$listOfDuplicateRows
-  #                 ,options = list(pageLength = 5))
-  # })
 
 }

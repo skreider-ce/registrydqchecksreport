@@ -5,7 +5,7 @@
 #' @export
 renderBodyPlaceholders <- function(.output){
   .output$criticalCheckOutputPlaceholder <- shiny::renderUI({
-    criticalCheckBodyOutput()
+    checkBodyOutput()
   })
 }
 
@@ -13,7 +13,7 @@ renderBodyPlaceholders <- function(.output){
 #' (internal function) Canned code to render placeholders for the critical check summary and results
 #'
 #' @export
-criticalCheckBodyOutput <- function(){
+checkBodyOutput <- function(){
   shiny::renderUI({
     shiny::fluidRow(
       renderCCSummaryPlaceholder()

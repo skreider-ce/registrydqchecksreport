@@ -6,10 +6,10 @@ ui <- function(){
           # Dropdown for main list items
           selectInput("dataPullDate", "Choose a Report Run Date", choices = NULL)
         )
+        # Dropdown for datasets to choose
         ,shiny::fluidRow(
           shiny::selectInput("datasetName", "Choose a Dataset", choices = NULL)
         )
-
       )
       ,shinydashboard::dashboardBody(
         shiny::tags$head(
@@ -24,6 +24,7 @@ ui <- function(){
             )
           )
         )
+        # Define locations for rest of the report body
         ,shiny::tags$script(HTML("$('body').addClass('fixed');"))
         ,shiny::actionButton("downloadBtn", "Download as PDF")
         ,shiny::fluidRow(uiOutput("runnerSummaryPlaceholder"))

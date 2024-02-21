@@ -19,6 +19,7 @@ server <- function(input, output, session) {
     .selectedPullDate(input$dataPullDate)
     shiny::updateSelectInput(session, "datasetName", choices = c(names(myFiles[[input$dataPullDate]]$criticalChecks)))
 
+    # Display runner summary on the report
     if(.selectedPullDate() != ""){
       .selectedRunnerSummary(myFiles[[.selectedPullDate()]]$runnerSummary)
       output$runnerSummaryPlaceholder <- shiny::renderUI({
@@ -28,6 +29,7 @@ server <- function(input, output, session) {
       })
     }
 
+    # Display critical check summary on the report
     output$totalCritCheckPlaceholder <- shiny::renderUI({
       shiny::renderPrint({
         print(myFiles[[.selectedPullDate()]]$checkSummary$criticalCheckSummary)
@@ -47,6 +49,7 @@ server <- function(input, output, session) {
       .selectedPassFail(extractPassFail(myFiles[[.selectedPullDate()]]$criticalChecks[[.selectedDsName()]]))
       # Dynamically render critical check placeholders to UI
       renderBodyPlaceholders(output)
+      # Render the results of the checks to the report
       renderBodyResults(.output = output
                         ,.summary = .selectedPassFail()
                         ,.criticalCheckList = myFiles[[.selectedPullDate()]]$criticalChecks[[.selectedDsName()]]
@@ -54,6 +57,8 @@ server <- function(input, output, session) {
     }
   })
 
+  # Event listener for the download as png button
+  # COULD be made obsolete with registrydqcheckreportdown html output
   shiny::observeEvent(input$downloadBtn, {
     print("ss")
     shinyscreenshot::screenshot(filename = glue::glue("{.selectedDsName()}_{.selectedPullDate()}"))
