@@ -9,7 +9,9 @@ renderCheckDetailResults(.output, .criticalCheckList, .nonCriticalCheckList)
 \arguments{
 \item{.output}{The shiny app server output object}
 
-\item{.checkList}{A list of the results of the critical checks}
+\item{.criticalCheckList}{List of the critical checks to render}
+
+\item{.nonCriticalCheckList}{List of the noncritical checks to render}
 }
 \description{
 (internal function) Render the results of the critical checks to the ui

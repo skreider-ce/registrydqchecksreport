@@ -1,6 +1,6 @@
 #' Run the CorEvitas "Registry Data Quality Checks Report"
 #'
-#' @param outputUrl A text url string to the location of the registry check output datasets
+#' @param .outputUrl A text url string to the location of the registry check output datasets
 #'
 #' @export
 runApplication <- function(.outputUrl){

@@ -7,7 +7,7 @@
 runApplication(.outputUrl)
 }
 \arguments{
-\item{outputUrl}{A text url string to the location of the registry check output datasets}
+\item{.outputUrl}{A text url string to the location of the registry check output datasets}
 }
 \description{
 Run the CorEvitas "Registry Data Quality Checks Report"

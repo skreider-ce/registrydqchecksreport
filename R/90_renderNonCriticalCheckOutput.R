@@ -11,19 +11,19 @@ renderNonCriticalCheckOuput <- function(.output, .resultsToRender) {
     column_elements <-
       lapply(names(.resultsToRender$nPctList), function(item) {
         shiny::column(width = 12
-                      ,column(width = 12,
-                              h2(glue::glue("Title: {.resultsToRender$nPctList[[item]]$checkTitle}"))
+                      ,shiny::column(width = 12,
+                              shiny::h2(glue::glue("Title: {.resultsToRender$nPctList[[item]]$checkTitle}"))
                               ,style = "background-color: rgb(252,116,8);")
-                      ,h4(glue::glue("Description: {.resultsToRender$nPctList[[item]]$checkDescription}"))
-                      ,p(glue::glue("Total observations: {.resultsToRender$nPctList[[item]]$values$N}"))
-                      ,p(glue::glue("Number failed: {.resultsToRender$nPctList[[item]]$values$n}"))
-                      ,p(glue::glue("Percentage failed: {round(.resultsToRender$nPctList[[item]]$values$pct, digits = 4)}"))
+                      ,shiny::h4(glue::glue("Description: {.resultsToRender$nPctList[[item]]$checkDescription}"))
+                      ,shiny::p(glue::glue("Total observations: {.resultsToRender$nPctList[[item]]$values$N}"))
+                      ,shiny::p(glue::glue("Number failed: {.resultsToRender$nPctList[[item]]$values$n}"))
+                      ,shiny::p(glue::glue("Percentage failed: {round(.resultsToRender$nPctList[[item]]$values$pct, digits = 4)}"))
                       ,shiny::fluidRow(class = "row-padding-top row-padding-bottom"
                                        ,shiny::column(12, DT::DTOutput(paste0("subitems_",item)))
                                       )
                       ,style = "border: 2px solid;")
       })
-    do.call(tagList, column_elements)
+    do.call(shiny::tagList, column_elements)
   })
 
   # Loop through nPctList ncCheck output and render tables

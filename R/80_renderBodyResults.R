@@ -1,8 +1,9 @@
 #' (internal function) Render the check results in the body of the UI
 #'
 #' @param .output The shiny app server output object
+#' @param .criticalCheckList List of the critical checks to render
+#' @param .nonCriticalCheckList List of the noncritical checks to render
 #' @param .summary The summary object to be rendered to the ui
-#' @param .checkList The list of check results to be rendered to the ui
 #'
 #' @export
 renderBodyResults <- function(.output,.summary,.criticalCheckList,.nonCriticalCheckList){
@@ -15,8 +16,9 @@ renderBodyResults <- function(.output,.summary,.criticalCheckList,.nonCriticalCh
 
 #' (internal function) Render the results of the critical checks to the ui
 #'
+#' @param .criticalCheckList List of the critical checks to render
+#' @param .nonCriticalCheckList List of the noncritical checks to render
 #' @param .output The shiny app server output object
-#' @param .checkList A list of the results of the critical checks
 #'
 #' @export
 renderCheckDetailResults <- function(.output,.criticalCheckList,.nonCriticalCheckList){

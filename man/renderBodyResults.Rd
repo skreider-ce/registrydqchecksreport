@@ -11,7 +11,9 @@ renderBodyResults(.output, .summary, .criticalCheckList, .nonCriticalCheckList)
 
 \item{.summary}{The summary object to be rendered to the ui}
 
-\item{.checkList}{The list of check results to be rendered to the ui}
+\item{.criticalCheckList}{List of the critical checks to render}
+
+\item{.nonCriticalCheckList}{List of the noncritical checks to render}
 }
 \description{
 (internal function) Render the check results in the body of the UI
