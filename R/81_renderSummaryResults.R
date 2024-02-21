@@ -6,7 +6,7 @@
 #' @export
 renderSummaryResults <- function(.output, .summary){
   .output$criticalCheckSummaryPlaceholder <- shiny::renderUI({
-    shiny::h1("SUMMARY")
+    shiny::h1("Critical Check Summary")
     shiny::renderTable({
       .summary
     }, rownames = FALSE)

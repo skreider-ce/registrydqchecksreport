@@ -35,6 +35,13 @@ server <- function(input, output, session) {
         print(myFiles[[.selectedPullDate()]]$checkSummary$criticalCheckSummary)
       })
     })
+
+    # Display noncritical check summary on the report
+    output$totalNonCritCheckPlaceholder <- shiny::renderUI({
+      shiny::renderPrint({
+        print(myFiles[[.selectedPullDate()]]$checkSummary$nonCriticalCheckSummary)
+      })
+    })
   })
 
   # When a datasetName is selected - store that selection in a variable
