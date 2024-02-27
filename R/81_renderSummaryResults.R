@@ -4,11 +4,18 @@
 #' @param .summary The summary object to be rendered
 #'
 #' @export
-renderSummaryResults <- function(.output, .summary){
+renderSummaryResults <- function(.output, .ccSummary, .ncSummary){
   .output$criticalCheckSummaryPlaceholder <- shiny::renderUI({
     shiny::h1("Critical Check Summary")
     shiny::renderTable({
-      .summary
+      .ccSummary
+    }, rownames = FALSE)
+  })
+
+  .output$nonCriticalCheckSummaryPlaceholder <- shiny::renderUI({
+    shiny::h1("Non-Critical Check Summary")
+    shiny::renderTable({
+      .ncSummary
     }, rownames = FALSE)
   })
 }

@@ -10,7 +10,8 @@ server <- function(input, output, session) {
   # Create placeholder reactive values for pullDate and datasetName
   .selectedPullDate <- shiny::reactiveVal(NULL)
   .selectedDsName <- shiny::reactiveVal(NULL)
-  .selectedPassFail <- shiny::reactiveVal(NULL)
+  .selectedCcPassFail <- shiny::reactiveVal(NULL)
+  .selectedNcPassFail <- shiny::reactiveVal(NULL)
   .selectedPassFailUpper <- shiny::reactiveVal(NULL)
   .selectedRunnerSummary <- shiny::reactiveVal(NULL)
 
@@ -52,13 +53,20 @@ server <- function(input, output, session) {
   })
 
   shiny::observe({
-    if(!is.null(.selectedDsName())){
-      .selectedPassFail(extractPassFail(myFiles[[.selectedPullDate()]]$criticalChecks[[.selectedDsName()]]))
+    if(.selectedDsName() != ""){
+      # print(myFiles[[.selectedPullDate()]]$checkSummary$criticalCheckSummary)
+
+      .selectedCcPassFail(myFiles[[.selectedPullDate()]]$checkSummary$criticalCheckSummary |>
+                          dplyr::filter(dataset == .selectedDsName()))
+      .selectedNcPassFail(myFiles[[.selectedPullDate()]]$checkSummary$nonCriticalCheckSummary |>
+                            dplyr::filter(dataset == .selectedDsName()))
+
       # Dynamically render critical check placeholders to UI
       renderBodyPlaceholders(output)
       # Render the results of the checks to the report
       renderBodyResults(.output = output
-                        ,.summary = .selectedPassFail()
+                        ,.ccSummary = .selectedCcPassFail()
+                        ,.ncSummary = .selectedNcPassFail()
                         ,.criticalCheckList = myFiles[[.selectedPullDate()]]$criticalChecks[[.selectedDsName()]]
                         ,.nonCriticalCheckList = myFiles[[.selectedPullDate()]]$nonCriticalChecks[[.selectedDsName()]])
     }
