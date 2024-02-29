@@ -6,6 +6,40 @@
 #' @export
 renderNonCriticalCheckOuput <- function(.output, .resultsToRender) {
 
+
+  # Loop through codebookChecks ncCheck output and output info and table placeholders
+  .output$codebookNcCheckDetails <- shiny::renderUI({
+    column_elements <-
+      lapply(names(.resultsToRender$codebookChecks), function(item) {
+        shiny::column(width = 12
+                      ,shiny::column(width = 12,
+                                     shiny::h2(glue::glue("Title: {.resultsToRender$codebookChecks[[item]]$checkTitle}"))
+                                     ,style = "background-color: rgb(252,116,8);")
+                      ,shiny::h4(glue::glue("Description: {.resultsToRender$codebookChecks[[item]]$checkDescription}"))
+                      ,shiny::p(glue::glue("Total observations: {.resultsToRender$codebookChecks[[item]]$values$N}"))
+                      ,shiny::p(glue::glue("Number failed: {.resultsToRender$codebookChecks[[item]]$values$n}"))
+                      ,shiny::p(glue::glue("Percentage failed: {round(.resultsToRender$codebookChecks[[item]]$values$pct, digits = 4)}"))
+                      ,shiny::fluidRow(class = "row-padding-top row-padding-bottom"
+                                       ,shiny::column(12, DT::DTOutput(paste0("subitems_",item)))
+                      )
+                      ,style = "border: 2px solid;")
+      })
+    do.call(shiny::tagList, column_elements)
+  })
+
+  # Loop through codebookChecks ncCheck output and render tables
+  for(item_name in names(.resultsToRender$codebookChecks)){
+    local({
+      .lin <- item_name
+      if(nrow(.resultsToRender$codebookChecks[[.lin]]$listing) > 0){
+        .output[[paste0("subitems_",.lin)]] <- DT::renderDT({
+          DT::datatable(data.frame(.resultsToRender$codebookChecks[[.lin]]$listing[,c(0:min(ncol(.resultsToRender$codebookChecks[[.lin]]$listing), 5))])
+                        ,options = list(pageLength = 5))
+        })
+      }
+    })
+  }
+
   # Loop through nPctList ncCheck output and output info and table placeholders
   .output$nonCriticalCheckDetails <- shiny::renderUI({
     column_elements <-
