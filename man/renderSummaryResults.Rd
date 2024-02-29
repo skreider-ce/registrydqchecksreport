@@ -4,7 +4,7 @@
 \alias{renderSummaryResults}
 \title{(internal function) Render the summary results to the ui}
 \usage{
-renderSummaryResults(.output, .summary)
+renderSummaryResults(.output, .ccSummary, .ncSummary)
 }
 \arguments{
 \item{.output}{The shiny app server output object}

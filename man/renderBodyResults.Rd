@@ -4,16 +4,22 @@
 \alias{renderBodyResults}
 \title{(internal function) Render the check results in the body of the UI}
 \usage{
-renderBodyResults(.output, .summary, .criticalCheckList, .nonCriticalCheckList)
+renderBodyResults(
+  .output,
+  .ccSummary,
+  .ncSummary,
+  .criticalCheckList,
+  .nonCriticalCheckList
+)
 }
 \arguments{
 \item{.output}{The shiny app server output object}
 
-\item{.summary}{The summary object to be rendered to the ui}
-
 \item{.criticalCheckList}{List of the critical checks to render}
 
 \item{.nonCriticalCheckList}{List of the noncritical checks to render}
+
+\item{.summary}{The summary object to be rendered to the ui}
 }
 \description{
 (internal function) Render the check results in the body of the UI

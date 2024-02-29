@@ -2,7 +2,6 @@
 
 export(checkBodyOutput)
 export(createListOfFiles)
-export(extractPassFail)
 export(getAllRdsFromPath)
 export(renderBodyPlaceholders)
 export(renderBodyResults)

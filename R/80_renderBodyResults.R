@@ -6,9 +6,10 @@
 #' @param .summary The summary object to be rendered to the ui
 #'
 #' @export
-renderBodyResults <- function(.output,.summary,.criticalCheckList,.nonCriticalCheckList){
+renderBodyResults <- function(.output,.ccSummary,.ncSummary,.criticalCheckList,.nonCriticalCheckList){
   renderSummaryResults(.output = .output
-                       ,.summary = .summary)
+                       ,.ccSummary = .ccSummary
+                       ,.ncSummary = .ncSummary)
   renderCheckDetailResults(.output = .output
                            ,.criticalCheckList = .criticalCheckList
                            ,.nonCriticalCheckList = .nonCriticalCheckList)
