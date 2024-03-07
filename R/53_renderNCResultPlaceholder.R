@@ -9,6 +9,7 @@ renderNCResultPlaceholder <- function(){
                                ,shiny::h3(glue::glue("Results of NonCritical Checks"))
                                ,style = "background-color: lightblue;"
                 )
+                ,shiny::uiOutput(glue::glue("codebookNcCheckDetails"))
                 ,shiny::uiOutput(glue::glue("nonCriticalCheckDetails"))
   )
 }
