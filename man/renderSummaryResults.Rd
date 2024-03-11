@@ -9,7 +9,9 @@ renderSummaryResults(.output, .ccSummary, .ncSummary)
 \arguments{
 \item{.output}{The shiny app server output object}
 
-\item{.summary}{The summary object to be rendered}
+\item{.ccSummary}{The critical check summary object}
+
+\item{.ncSummary}{The noncritical check summary object}
 }
 \description{
 (internal function) Render the summary results to the ui

@@ -15,11 +15,13 @@ renderBodyResults(
 \arguments{
 \item{.output}{The shiny app server output object}
 
+\item{.ccSummary}{The critical check summary list}
+
+\item{.ncSummary}{The noncritical check summary list}
+
 \item{.criticalCheckList}{List of the critical checks to render}
 
 \item{.nonCriticalCheckList}{List of the noncritical checks to render}
-
-\item{.summary}{The summary object to be rendered to the ui}
 }
 \description{
 (internal function) Render the check results in the body of the UI

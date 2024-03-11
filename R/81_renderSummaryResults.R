@@ -1,7 +1,8 @@
 #' (internal function) Render the summary results to the ui
 #'
+#' @param .ccSummary The critical check summary object
+#' @param .ncSummary The noncritical check summary object
 #' @param .output The shiny app server output object
-#' @param .summary The summary object to be rendered
 #'
 #' @export
 renderSummaryResults <- function(.output, .ccSummary, .ncSummary){

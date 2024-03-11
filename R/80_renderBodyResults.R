@@ -2,8 +2,9 @@
 #'
 #' @param .output The shiny app server output object
 #' @param .criticalCheckList List of the critical checks to render
+#' @param .ccSummary The critical check summary list
+#' @param .ncSummary The noncritical check summary list
 #' @param .nonCriticalCheckList List of the noncritical checks to render
-#' @param .summary The summary object to be rendered to the ui
 #'
 #' @export
 renderBodyResults <- function(.output,.ccSummary,.ncSummary,.criticalCheckList,.nonCriticalCheckList){
