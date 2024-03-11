@@ -27,6 +27,7 @@ renderCritCheck7 <- function(.output, .resultsToRender){
     .output$dataTable7 <- DT::renderDT({
       DT::datatable(.resultsToRender$essentialVariablesMissingness
                     ,options = list(pageLength = 5)
+                    ,rownames = FALSE
                     ,colnames = c("Variable Name", "Number of Rows", "Number Missing", "Proportion Missing"))
     })
   }

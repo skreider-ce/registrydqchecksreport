@@ -25,7 +25,8 @@ server <- function(input, output, session) {
       .selectedRunnerSummary(myFiles[[.selectedPullDate()]]$runnerSummary)
       output$runnerSummaryPlaceholder <- shiny::renderUI({
         shiny::renderPrint({
-          paste0(.selectedRunnerSummary())
+          print("Runner Summary")
+          print(.selectedRunnerSummary())
         })
       })
     }
@@ -33,6 +34,7 @@ server <- function(input, output, session) {
     # Display critical check summary on the report
     output$totalCritCheckPlaceholder <- shiny::renderUI({
       shiny::renderPrint({
+        print("Critical Check Summary")
         print(myFiles[[.selectedPullDate()]]$checkSummary$criticalCheckSummary)
       })
     })
@@ -40,6 +42,7 @@ server <- function(input, output, session) {
     # Display noncritical check summary on the report
     output$totalNonCritCheckPlaceholder <- shiny::renderUI({
       shiny::renderPrint({
+        print("NonCritical Check Summary")
         print(myFiles[[.selectedPullDate()]]$checkSummary$nonCriticalCheckSummary)
       })
     })

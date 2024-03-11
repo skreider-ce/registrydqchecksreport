@@ -24,11 +24,16 @@ renderCritCheck8 <- function(.output, .resultsToRender){
     .output$textOutput8 <- shiny::renderText({
       paste0("PASS: ",.resultsToRender$pass)
     })
+    .dtToPrint <- .resultsToRender$essentialVariablesMissingness |>
+      dplyr::select(varName, nRows, nMissing, propMissing, propMissingComp
+                    ,acceptableMissingness, skipLogic)
     .output$dataTable8 <- DT::renderDT({
-      DT::datatable(.resultsToRender$essentialVariablesMissingness
+      DT::datatable(.dtToPrint
                     ,options = list(pageLength = 5)
-                    ,colnames = c("Variable Name", "Number of Rows", "Number Missing", "Proportion Missing"
-                                  ,"Last Month Number of Rows", "Last Month Number Missing", "Last Month Proportion Missing"))
+                    ,rownames = FALSE
+                    ,colnames = c("Var Name", "N Rows", "N Missing", "Prop Missing"
+                                  ,"Last Month Prop Missing"
+                                  ,"Acceptable Missing", "Skip Logic"))
     })
   }
 
