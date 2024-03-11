@@ -26,7 +26,7 @@ ui <- function(){
         )
         # Define locations for rest of the report body
         ,shiny::tags$script(HTML("$('body').addClass('fixed');"))
-        ,shiny::actionButton("downloadBtn", "Download as PDF")
+        ,shiny::actionButton("downloadBtn", "Download as PNG")
         ,shiny::fluidRow(uiOutput("runnerSummaryPlaceholder"))
         ,shiny::fluidRow(uiOutput("totalCritCheckPlaceholder"))
         ,shiny::fluidRow(uiOutput("totalNonCritCheckPlaceholder"))

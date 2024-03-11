@@ -13,8 +13,7 @@ renderNonCriticalCheckOuput <- function(.output, .resultsToRender) {
       lapply(names(.resultsToRender$codebookChecks), function(item) {
         shiny::column(width = 12
                       ,shiny::column(width = 12,
-                                     shiny::h2(glue::glue("Title: {.resultsToRender$codebookChecks[[item]]$checkTitle}"))
-                                     ,style = "background-color: rgb(252,116,8);")
+                                     shiny::h2(glue::glue("Title: {.resultsToRender$codebookChecks[[item]]$checkTitle}")))
                       ,shiny::h4(glue::glue("Description: {.resultsToRender$codebookChecks[[item]]$checkDescription}"))
                       ,shiny::p(glue::glue("Total observations: {.resultsToRender$codebookChecks[[item]]$values$N}"))
                       ,shiny::p(glue::glue("Number failed: {.resultsToRender$codebookChecks[[item]]$values$n}"))
@@ -28,13 +27,14 @@ renderNonCriticalCheckOuput <- function(.output, .resultsToRender) {
   })
 
   # Loop through codebookChecks ncCheck output and render tables
-  for(item_name in names(.resultsToRender$codebookChecks)){
+  for(.checkName in names(.resultsToRender$codebookChecks)){
     local({
-      .lin <- item_name
-      if(nrow(.resultsToRender$codebookChecks[[.lin]]$listing) > 0){
-        .output[[paste0("subitems_",.lin)]] <- DT::renderDT({
-          DT::datatable(data.frame(.resultsToRender$codebookChecks[[.lin]]$listing[,c(0:min(ncol(.resultsToRender$codebookChecks[[.lin]]$listing), 5))])
-                        ,options = list(pageLength = 5))
+      .currentCheckId <- .checkName
+      if(nrow(.resultsToRender$codebookChecks[[.currentCheckId]]$listing) > 0){
+        .output[[paste0("subitems_",.currentCheckId)]] <- DT::renderDT({
+          DT::datatable(data.frame(.resultsToRender$codebookChecks[[.currentCheckId]]$listing[,c(0:min(ncol(.resultsToRender$codebookChecks[[.currentCheckId]]$listing), 5))])
+                        ,options = list(pageLength = 5)
+                        ,rownames = FALSE)
         })
       }
     })
@@ -46,8 +46,7 @@ renderNonCriticalCheckOuput <- function(.output, .resultsToRender) {
       lapply(names(.resultsToRender$nPctList), function(item) {
         shiny::column(width = 12
                       ,shiny::column(width = 12,
-                              shiny::h2(glue::glue("Title: {.resultsToRender$nPctList[[item]]$checkTitle}"))
-                              ,style = "background-color: rgb(252,116,8);")
+                              shiny::h2(glue::glue("Title: {.resultsToRender$nPctList[[item]]$checkTitle}")))
                       ,shiny::h4(glue::glue("Description: {.resultsToRender$nPctList[[item]]$checkDescription}"))
                       ,shiny::p(glue::glue("Total observations: {.resultsToRender$nPctList[[item]]$values$N}"))
                       ,shiny::p(glue::glue("Number failed: {.resultsToRender$nPctList[[item]]$values$n}"))
@@ -67,7 +66,8 @@ renderNonCriticalCheckOuput <- function(.output, .resultsToRender) {
       if(nrow(.resultsToRender$nPctList[[.lin]]$listing) > 0){
         .output[[paste0("subitems_",.lin)]] <- DT::renderDT({
           DT::datatable(data.frame(.resultsToRender$nPctList[[.lin]]$listing[,c(0:min(ncol(.resultsToRender$nPctList[[.lin]]$listing), 5))])
-                        ,options = list(pageLength = 5))
+                        ,options = list(pageLength = 5)
+                        ,rownames = FALSE)
         })
       }
     })
