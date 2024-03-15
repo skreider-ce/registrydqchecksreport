@@ -1,7 +1,7 @@
 # Define the UI
 ui <- function(){
     shinydashboard::dashboardPage(
-      shinydashboard::dashboardHeader(title = "Critical Checks")
+      shinydashboard::dashboardHeader(title = "Data Quality Report")
       ,shinydashboard::dashboardSidebar(shiny::fluidRow(
           # Dropdown for main list items
           selectInput("dataPullDate", "Choose a Report Run Date", choices = NULL)
@@ -26,7 +26,6 @@ ui <- function(){
         )
         # Define locations for rest of the report body
         ,shiny::tags$script(HTML("$('body').addClass('fixed');"))
-        ,shiny::actionButton("downloadBtn", "Download as PNG")
         ,shiny::fluidRow(uiOutput("runnerSummaryPlaceholder"))
         ,shiny::fluidRow(uiOutput("totalCritCheckPlaceholder"))
         ,shiny::fluidRow(uiOutput("totalNonCritCheckPlaceholder"))

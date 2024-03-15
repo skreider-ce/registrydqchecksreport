@@ -74,11 +74,4 @@ server <- function(input, output, session) {
                         ,.nonCriticalCheckList = myFiles[[.selectedPullDate()]]$nonCriticalChecks[[.selectedDsName()]])
     }
   })
-
-  # Event listener for the download as png button
-  # COULD be made obsolete with registrydqcheckreportdown html output
-  shiny::observeEvent(input$downloadBtn, {
-    print("ss")
-    shinyscreenshot::screenshot(filename = glue::glue("{.selectedDsName()}_{.selectedPullDate()}"))
-  })
 }
