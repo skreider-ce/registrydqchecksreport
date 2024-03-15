@@ -36,6 +36,10 @@ renderNonCriticalCheckOuput <- function(.output, .resultsToRender) {
                         ,options = list(pageLength = 5)
                         ,rownames = FALSE)
         })
+      } else {
+          .output[[paste0("subitems_",.lin)]] <- DT::renderDT({
+            DT::datatable(data.frame(NULL))
+          })
       }
     })
   }
@@ -68,6 +72,10 @@ renderNonCriticalCheckOuput <- function(.output, .resultsToRender) {
           DT::datatable(data.frame(.resultsToRender$nPctList[[.lin]]$listing[,c(0:min(ncol(.resultsToRender$nPctList[[.lin]]$listing), 5))])
                         ,options = list(pageLength = 5)
                         ,rownames = FALSE)
+        })
+      } else {
+        .output[[paste0("subitems_",.lin)]] <- DT::renderDT({
+          DT::datatable(data.frame(NULL))
         })
       }
     })
