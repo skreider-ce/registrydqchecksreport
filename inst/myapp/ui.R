@@ -1,7 +1,7 @@
 # Define the UI
 ui <- function(){
     shinydashboard::dashboardPage(
-      shinydashboard::dashboardHeader(title = "Critical Checks")
+      shinydashboard::dashboardHeader(title = "Data Quality Report")
       ,shinydashboard::dashboardSidebar(shiny::fluidRow(
           # Dropdown for main list items
           selectInput("dataPullDate", "Choose a Report Run Date", choices = NULL)

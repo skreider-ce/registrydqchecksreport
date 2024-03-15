@@ -13,7 +13,7 @@ renderNonCriticalCheckOuput <- function(.output, .resultsToRender) {
       lapply(names(.resultsToRender$codebookChecks), function(item) {
         shiny::column(width = 12
                       ,shiny::column(width = 12,
-                                     shiny::h2(glue::glue("Title: {.resultsToRender$codebookChecks[[item]]$checkTitle}")))
+                                     shiny::h2(glue::glue("{.resultsToRender$codebookChecks[[item]]$checkId} - Title: {.resultsToRender$codebookChecks[[item]]$checkTitle}")))
                       ,shiny::h4(glue::glue("Description: {.resultsToRender$codebookChecks[[item]]$checkDescription}"))
                       ,shiny::p(glue::glue("Total observations: {.resultsToRender$codebookChecks[[item]]$values$N}"))
                       ,shiny::p(glue::glue("Number failed: {.resultsToRender$codebookChecks[[item]]$values$n}"))
@@ -46,7 +46,7 @@ renderNonCriticalCheckOuput <- function(.output, .resultsToRender) {
       lapply(names(.resultsToRender$nPctList), function(item) {
         shiny::column(width = 12
                       ,shiny::column(width = 12,
-                              shiny::h2(glue::glue("Title: {.resultsToRender$nPctList[[item]]$checkTitle}")))
+                              shiny::h2(glue::glue("{.resultsToRender$codebookChecks[[item]]$checkId} - Title: {.resultsToRender$nPctList[[item]]$checkTitle}")))
                       ,shiny::h4(glue::glue("Description: {.resultsToRender$nPctList[[item]]$checkDescription}"))
                       ,shiny::p(glue::glue("Total observations: {.resultsToRender$nPctList[[item]]$values$N}"))
                       ,shiny::p(glue::glue("Number failed: {.resultsToRender$nPctList[[item]]$values$n}"))
