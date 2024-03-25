@@ -27,7 +27,9 @@ ui <- function(){
         # Define locations for rest of the report body
         ,shiny::tags$script(HTML("$('body').addClass('fixed');"))
         ,shiny::fluidRow(uiOutput("runnerSummaryPlaceholder"))
+        ,shiny::h2("Summary of Critical Checks")
         ,shiny::fluidRow(uiOutput("totalCritCheckPlaceholder"))
+        ,shiny::h2("Summary of NonCritical Checks")
         ,shiny::fluidRow(uiOutput("totalNonCritCheckPlaceholder"))
         ,shiny::fluidRow(uiOutput("criticalCheckOutputPlaceholder"))
       )

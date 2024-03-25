@@ -33,18 +33,26 @@ server <- function(input, output, session) {
 
     # Display critical check summary on the report
     output$totalCritCheckPlaceholder <- shiny::renderUI({
-      shiny::renderPrint({
-        print("Critical Check Summary")
-        print(myFiles[[.selectedPullDate()]]$checkSummary$criticalCheckSummary)
-      })
+      DT::datatable(myFiles[[.selectedPullDate()]]$checkSummary$criticalCheckSummary
+                    ,rownames = FALSE
+                    ,options = list(
+                      paging = FALSE,  # Display all rows (no pagination)
+                      searching = FALSE  # Hide search bar
+                    )) |>
+        DT::formatStyle(
+          names(myFiles[[.selectedPullDate()]]$checkSummary$criticalCheckSummary)
+          ,backgroundColor = DT::styleEqual(c("Fail", "Pass"), c("#FF7F7F", "#D1FFBD"))
+        )
     })
 
     # Display noncritical check summary on the report
     output$totalNonCritCheckPlaceholder <- shiny::renderUI({
-      shiny::renderPrint({
-        print("NonCritical Check Summary")
-        print(myFiles[[.selectedPullDate()]]$checkSummary$nonCriticalCheckSummary)
-      })
+      DT::datatable(myFiles[[.selectedPullDate()]]$checkSummary$nonCriticalCheckSummary
+                    ,rownames = FALSE
+                    ,options = list(
+                      paging = FALSE,  # Display all rows (no pagination)
+                      searching = FALSE  # Hide search bar
+                    ))
     })
   })
 
@@ -65,7 +73,7 @@ server <- function(input, output, session) {
                             dplyr::filter(dataset == .selectedDsName()))
 
       # Dynamically render critical check placeholders to UI
-      renderBodyPlaceholders(output)
+      renderBodyPlaceholders(output, .selectedDsName())
       # Render the results of the checks to the report
       renderBodyResults(.output = output
                         ,.ccSummary = .selectedCcPassFail()
