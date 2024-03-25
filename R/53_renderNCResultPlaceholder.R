@@ -11,5 +11,6 @@ renderNCResultPlaceholder <- function(){
                 )
                 ,shiny::uiOutput(glue::glue("codebookNcCheckDetails"))
                 ,shiny::uiOutput(glue::glue("nonCriticalCheckDetails"))
+                ,shiny::uiOutput(glue::glue("summaryStatNonCriticalCheckDetails"))
   )
 }

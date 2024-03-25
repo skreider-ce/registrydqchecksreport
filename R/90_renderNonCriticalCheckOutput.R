@@ -69,7 +69,43 @@ renderNonCriticalCheckOuput <- function(.output, .resultsToRender) {
       .lin <- item_name
       if(nrow(.resultsToRender$nPctList[[.lin]]$listing) > 0){
         .output[[paste0("subitems_",.lin)]] <- DT::renderDT({
-          DT::datatable(data.frame(.resultsToRender$nPctList[[.lin]]$listing[,c(0:min(ncol(.resultsToRender$nPctList[[.lin]]$listing), 5))])
+          DT::datatable(data.frame(.resultsToRender$nPctList[[.lin]]$listing)
+                        ,options = list(pageLength = 5)
+                        ,rownames = FALSE)
+        })
+      } else {
+        .output[[paste0("subitems_",.lin)]] <- DT::renderDT({
+          DT::datatable(data.frame(NULL))
+        })
+      }
+    })
+  }
+
+
+
+  # Loop through summaryStats ncCheck output and output info and table placeholders
+  .output$summaryStatNonCriticalCheckDetails <- shiny::renderUI({
+    column_elements <-
+      lapply(names(.resultsToRender$summaryStats), function(item) {
+        shiny::column(width = 12
+                      ,shiny::column(width = 12,
+                                     shiny::h2(glue::glue("{item} - Title: {.resultsToRender$summaryStats[[item]]$checkTitle}")))
+                      ,shiny::h4(glue::glue("Description: {.resultsToRender$summaryStats[[item]]$checkDescription}"))
+                      ,shiny::fluidRow(class = "row-padding-top row-padding-bottom"
+                                       ,shiny::column(12, DT::DTOutput(paste0("subitems_",item)))
+                      )
+                      ,style = "border: 2px solid;")
+      })
+    do.call(shiny::tagList, column_elements)
+  })
+
+  # Loop through summaryStats ncCheck output and render tables
+  for(item_name in names(.resultsToRender$summaryStats)){
+    local({
+      .lin <- item_name
+      if(nrow(.resultsToRender$summaryStats[[.lin]]$listing) > 0){
+        .output[[paste0("subitems_",.lin)]] <- DT::renderDT({
+          DT::datatable(data.frame(.resultsToRender$summaryStats[[.lin]]$listing)
                         ,options = list(pageLength = 5)
                         ,rownames = FALSE)
         })
